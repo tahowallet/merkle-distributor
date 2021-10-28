@@ -3,6 +3,8 @@
   "author": {
     "name": "Moody Salem"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "description": "📦 A smart contract that distributes a balance of tokens according to a merkle root",
   "version": "1.0.1",
   "homepage": "https://uniswap.org",
@@ -14,9 +16,6 @@
     "type": "git",
     "url": "https://github.com/Uniswap/merkle-distributor"
   },
-  "files": [
-    "build"
-  ],
   "engines": {
     "node": ">=10"
   },
@@ -24,6 +23,7 @@
     "@openzeppelin/contracts": "3.1.0",
     "@types/chai": "^4.2.6",
     "@types/mocha": "^5.2.7",
+    "@types/sinon-chai": "^3.2.5",
     "axios": "^0.20.0",
     "chai": "^4.2.0",
     "commander": "^6.1.0",
@@ -39,10 +39,14 @@
   "scripts": {
     "precompile": "rimraf ./build/",
     "compile": "waffle",
+    "prebuild": "rimraf ./build/ ./dist/",
+    "build": "waffle && tsc",
     "pretest": "yarn compile",
     "test": "mocha",
     "generate-merkle-root": "ts-node scripts/generate-merkle-root.ts",
     "generate-merkle-root:example": "ts-node scripts/generate-merkle-root.ts --input scripts/example.json",
-    "prepublishOnly": "yarn test"
-  }
+    "prepublishOnly": "yarn test",
+    "prepack": "yarn build"
+  },
+  "packageManager": "yarn@1.22.10"
 }
