@@ -48,5 +48,8 @@
     "prepublishOnly": "yarn test",
     "prepack": "yarn build"
   },
-  "packageManager": "yarn@1.22.10"
+  "packageManager": "yarn@1.22.10",
+  "dependencies": {
+    "ethers": "5.4.0"
+  }
 }
