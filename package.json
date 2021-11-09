@@ -46,7 +46,7 @@
     "generate-merkle-root": "ts-node scripts/generate-merkle-root.ts",
     "generate-merkle-root:example": "ts-node scripts/generate-merkle-root.ts --input scripts/example.json",
     "prepublishOnly": "yarn test",
-    "prepack": "yarn build"
+    "install": "yarn install --production=false --ignore-scripts && yarn build"
   },
   "packageManager": "yarn@1.22.10",
   "dependencies": {
